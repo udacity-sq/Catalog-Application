@@ -24,16 +24,12 @@ In your Git terminal type ```ls``` and you should now see the project files list
 
 Run the pyhton file called ```database_setup``` within the virtual machine. This will create the database.
 
-Next, run the python file called ```createDbCatalog```.You should see the success message indicating that
+Next, run the python file called ```createDbCatalog```. You should see the success message indicating that
 the Catalog and items have been created.
-
-* The authors table includes information about the authors of articles.
-* The articles table includes the articles themselves.cd 
-* The log table includes one entry for each time a user has accessed the site.
 
 ## Launching the Application:
 
-Run the pyhton file called ```Applcation``` within the virtual machine. 
+Run the pyhton file called ```Application.py``` within the virtual machine. 
 
 Open a webbrowser and go to the following [link](http://localhost:8000/)
 
