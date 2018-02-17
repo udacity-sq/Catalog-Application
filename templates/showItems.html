@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catalog Items</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='stylez.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <div class="row" role="banner">
+            <header class = "bannerBG col-sm-12">
+                <div class="row">
+                    <h1 class="header-text col-sm-11 col-xs-3">Catalog App</h1>
+                    {% if 'username' not in session %}
+                    <a class ="btn btn-primary col-sm-1 col-xs-1" href="{{url_for('showLogin')}}" >Login</a>
+                    {% else %}
+                    <a class ="btn btn-primary col-sm-1 col-xs-1" href="{{url_for('gdisconnect')}}" >Logoff</a>
+                    {% endif %}
+                </div>
+             </header>
+
+            <!--Item Details Below-->
+            <div class = "mainBG col-sm-8 col-sm-push-4">
+                {%if count > 1 %}
+                <h1>{{category}}  Items ({{count}} items)</h1>
+                {% for i in items %}
+                <!--<h2>{{i.title}}</h2>-->
+                <a href="{{url_for('itemDetails', title= i.title, category = category)}}">{{i.title}}</a>
+                <br>
+                {% endfor %}
+                {% endif %}
+                {% if count == 1 %}
+                <h1>{{category}}  Items ({{count}} item)</h1>
+                {% for i in items %}
+                <a href="{{url_for('itemDetails', title= i.title, category = category)}}">{{i.title}}</a>
+                <br>
+                {% endfor %}
+                {% endif %}
+                <br>
+                <br>
+                <a class="btn btn-success" href= "{{url_for('addItem', title = title, category = category)}}">Add a new Item</a>
+                <br>
+                <br>
+                <a class="btn btn-primary" href="{{url_for('showCatalog')}}">Home</a>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class = "catalogBG col-sm-4 col-sm-pull-8">
+                <h1>Categories</h1>
+                {% for i in catalog %}
+                <a href="{{url_for('showItems', category = i.category)}}"><strong>{{i.category}}</strong></a>
+                <!--<h2>{{i.category}}</h2>-->
+                <br>
+                <br>
+                {% endfor %}
+            </aside>
+        </div>
+    </div>
+</body>
+</html>

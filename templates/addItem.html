@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Item</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='stylez.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="row" role="banner">
+            <header class = "bannerBG col-sm-12">
+                <div class="row">
+                    <h1 class="header-text col-sm-11 col-xs-3">Catalog App</h1>
+                    {% if 'username' not in session %}
+                    <a class ="btn btn-primary col-sm-1 col-xs-1" href="{{url_for('showLogin')}}" >Login</a>
+                    {% else %}
+                    <a class ="btn btn-primary col-sm-1 col-xs-1" href="{{url_for('gdisconnect')}}" >Logoff</a>
+                    {% endif %}
+                </div>
+             </header>
+
+             <!--Add Item-->
+            <div class="mainBG col-sm-12">
+                <h1>Add Item</h1>
+            </div>
+
+            <form  class="mainBG col-sm-12" action="{{url_for('addItem')}}" method="post">
+                <div class="form-group">
+                    <h2>Title</h2>
+                    <input type="text" name="title" size ="30">
+                    </div>
+                <div class="form-group">
+                    <h2>Decsription</h2>
+                    <input type="text" name="description" size = "50">
+                </div>
+                <div class="form-group">
+                    <h2>Category</h2>
+                    <select name="category" size = "1">
+                        <option value ="Soccer">Soccer</option>
+                        <option value ="Basketball" selected = '#'>Basketball</option> <!--Need to move the selected item around based on category - use Jquery-->
+                        <option value ="Baseball">Baseball</option>
+                        <option value ="Frisbee">Frisbee</option>
+                        <option value ="Snowboarding">Snowboarding</option>
+                        <option value ="Rock Climbing">Rock Climbing</option>
+                        <option value ="Foosball">Foosball</option>
+                        <option value ="Skating">Skating</option>
+                        <option value ="Hockey">Hockey</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-primary"  value="Submit">
+
+                <a class="btn btn-warning" role="button" href="{{url_for('showCatalog')}}">Cancel</a>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+</body>
+</html>

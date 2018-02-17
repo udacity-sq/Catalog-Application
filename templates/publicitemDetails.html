@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catalog Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='stylez.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="row" role="banner">
+            <header class = "bannerBG col-sm-12">
+                <div class="row">
+                    <h1 class="header-text col-sm-11 col-xs-3">Catalog App</h1>
+                    {% if 'username' not in session %}
+                    <a class ="btn btn-primary col-sm-1 col-xs-1" href="{{url_for('showLogin')}}" >Login</a>
+                    {% else %}
+                    <a class ="btn btn-primary col-sm-1 col-xs-1" href="{{url_for('gdisconnect')}}" >Logoff</a>
+                    {% endif %}
+                </div>
+            </header>
+
+            <!--Item Details-->
+            <div class="mainBG col-sm-12">
+                <h1>{{details.title}} </h1>
+                <p>{{details.description}}</p>
+                <a class="btn btn-warning" role="button" href= "{{url_for('showCatalog')}}">Back</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

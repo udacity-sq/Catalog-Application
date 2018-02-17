@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catalog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='stylez.css') }}">
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="row" role="banner">
+            <header class = "bannerBG col-sm-12">
+                <div class="row">
+                    <h1 class="header-text col-sm-11 col-xs-3">Catalog App</h1>
+                    {% if 'username' not in session %}
+                    <a class ="btn btn-primary col-sm-1 col-xs-1" href="{{url_for('showLogin')}}" >Login</a>
+                    {% else %}
+                    <a class ="btn btn-primary col-sm-1 col-xs-1" href="{{url_for('gdisconnect')}}" >Logoff</a>
+                    {% endif %}
+                </div>
+             </header>
+
+             <!--Building Sidebar -->
+            <aside class = "catalogBG col-sm-4">
+                <h1 class = "catalog">Catalog</h1>
+                {% for i in catalog %}
+                <a class = "links" href="{{url_for('showItems', category = i.category)}}"><strong>{{i.category}}</strong></a>
+                <br>
+                {% endfor %}
+            </aside>
+
+            <!--Building Main -->
+            <div class = "mainBG col-sm-8">
+                <!--Flash Messages displayed on top-->
+                {% with messages = get_flashed_messages() %} <!-- the with method creates an instance variable "messages" & runs block of code when the page loads. Once the block of code finishes running the instance variable is no longer available -->
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li><strong>{{message}}</strong></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+
+            <!-- Below are the Latest Items -->
+                <h1>Latest Items</h1>
+                {% for item in Items %}
+                <p>{{item.title}}<i> ({{item.category}})</i></p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+</body>
+</html>
