@@ -1,0 +1,51 @@
+body {
+    background: #edf7f4;
+}
+
+.bannerBG {
+    background: #1f5b48 ; /*#999*/
+}
+
+.catalogBG {
+    background: #b3d3c9;
+}
+
+.mainBG {
+    background: #ceeae1;
+}
+
+.header-text {
+    color: #ffffff;
+    font-family: verdana;
+}
+
+#creator {
+    background-color: #868e96;
+}
+
+
+h1 {
+    color: #1f5b48;
+    font-family: verdana;
+}
+
+h2,h4, p {
+    color: #1f5b48;
+    font-family: verdana;
+}
+
+.positioned {
+    box-sizing: border-box;
+    margin: 0% 0% 0% 0%;
+}
+
+
+a {
+    color: #223d34;
+    font-size: 1.5em;
+}
+
+
+.flash {
+    background: #cee5f5;
+}
