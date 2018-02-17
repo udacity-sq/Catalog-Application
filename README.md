@@ -18,7 +18,7 @@ locate the catalog folder and ```cd``` in to it.
 The folder should be empty. Next, donwload the project files from GitHub for this project and
 unzip the contents in the catalog folder. 
 
-In your Git terminal type ```ls``` and you should now see the project files listed.
+In your terminal type ```ls``` and you should now see the project files listed.
 
 ## Creating & Populating the Database:
 
